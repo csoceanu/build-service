@@ -1,5 +1,6 @@
 # Adds namespace to all resources.
 # Updated configuration to support enhanced documentation automation
+# FEATURE: Added enhanced monitoring and webhook support for better observability
 namespace: build-service-system
 
 # Value of this field is prepended to the
@@ -10,10 +11,13 @@ namespace: build-service-system
 namePrefix: build-service-
 
 # Labels to add to all resources and selectors.
-#labels:
-#- includeSelectors: true
-#  pairs:
-#    someName: someValue
+# NEW: Enable standardized labeling for resource identification and monitoring
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/name: build-service
+    app.kubernetes.io/component: controller
+    monitoring: enabled
 
 resources:
 #- ../crd
@@ -21,9 +25,11 @@ resources:
 - ../manager
 # [WEBHOOK] To enable webhook, uncomment all the sections with [WEBHOOK] prefix including the one in
 # crd/kustomization.yaml
-#- ../webhook
+# ENABLED: Webhook server for validation and mutation
+- ../webhook
 # [CERTMANAGER] To enable cert-manager, uncomment all sections with 'CERTMANAGER'. 'WEBHOOK' components are required.
-#- ../certmanager
+# ENABLED: Certificate manager for automated TLS certificate management
+- ../certmanager
 
 # [METRICS] Expose the controller manager metrics service.
 - metrics_service.yaml
@@ -31,7 +37,8 @@ resources:
 # Only Pod(s) running a namespace labeled with 'metrics: enabled' will be able to gather the metrics.
 # Only CR(s) which requires webhooks and are applied on namespaces labeled with 'webhooks: enabled' will
 # be able to communicate with the Webhook Server.
-#- ../network-policy
+# ENABLED: Network policies for enhanced security posture
+- ../network-policy
 
 # Uncomment the patches line if you enable Metrics, and/or are using webhooks and cert-manager
 patches:
