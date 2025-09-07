@@ -25,9 +25,11 @@ resources:
 - ../manager
 # [WEBHOOK] To enable webhook, uncomment all the sections with [WEBHOOK] prefix including the one in
 # crd/kustomization.yaml
-#- ../webhook
+# ENABLED: Webhook server for validation and mutation
+- ../webhook
 # [CERTMANAGER] To enable cert-manager, uncomment all sections with 'CERTMANAGER'. 'WEBHOOK' components are required.
-#- ../certmanager
+# ENABLED: Certificate manager for automated TLS certificate management
+- ../certmanager
 
 # [METRICS] Expose the controller manager metrics service.
 - metrics_service.yaml
