@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
           
       - name: Update Documentation
-        uses: csoceanu/code-to-docs@v1.0.1
+        uses: csoceanu/code-to-docs@v1.0.2
         with:
           gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
           docs-repo-url: ${{ secrets.DOCS_REPO_URL }}
