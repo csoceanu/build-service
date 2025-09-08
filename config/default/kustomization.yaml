@@ -1,6 +1,6 @@
 # Adds namespace to all resources.
 # Updated configuration to support enhanced documentation automation
-# FEATURE: Added enhanced monitoring and webhook support for better observability
+# FEATURE: Added enhanced monitoring and webhook support for better observability and debugging
 namespace: build-service-system
 
 # Value of this field is prepended to the
